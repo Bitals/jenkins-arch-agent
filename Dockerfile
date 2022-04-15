@@ -67,6 +67,7 @@ RUN mkdir /tmpbuilddir && chown builder:builder /tmpbuilddir
 
 COPY manual-connections /home/builder/manual-connections
 
+RUN pacman -Sc --noconfirm
 USER builder
 
 ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
