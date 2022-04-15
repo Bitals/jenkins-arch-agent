@@ -27,4 +27,5 @@ gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
 #aur sync -A --noconfirm --noview --repo Bitals --root /home/builder/bitalsrepo paru
 echo Building $AURPACKAGE
 aur sync -A --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo $AURPACKAGE || exit 1 #sudo kill $( cat /opt/piavpn-manual/pia_pid ) #&& rm -rf /home/builder/.cache/
+sudo pacman -Sc
 sudo kill $( cat /opt/piavpn-manual/pia_pid )
