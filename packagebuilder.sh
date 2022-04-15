@@ -1,5 +1,7 @@
 #! /bin/sh
 
+echo "Installing OpenVPN"
+sudo pacman -Sy --noconfirm openvpn
 echo "Creating TUN device /dev/net/tun"
 sudo mkdir -p /dev/net
 sudo mknod /dev/net/tun c 10 200
@@ -20,7 +22,7 @@ cd /home/builder
 gpg --import $BITALSARK
 gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
 
-sudo pacman -Sy --noconfirm
+#sudo pacman -Sy --noconfirm
 
 #aur sync -A --noconfirm --noview --repo Bitals --root /home/builder/bitalsrepo paru
 echo Building $AURPACKAGE
