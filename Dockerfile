@@ -62,6 +62,10 @@ RUN pacman -Sy --noconfirm aurutils
 
 COPY packagebuilder.sh /opt/packagebuilder.sh
 RUN chmod +x /opt/packagebuilder.sh
+COPY custombuilder.sh /opt/packagebuilder.sh
+RUN chmod +x /opt/custombuilder.sh
+COPY vpn.sh /opt/packagebuilder.sh
+RUN chmod +x /opt/vpn.sh
 
 RUN mkdir /tmpbuilddir && chown builder:builder /tmpbuilddir
 
