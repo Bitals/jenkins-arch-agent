@@ -8,6 +8,6 @@ gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
 cd $OWNPACKAGE
 makepkg --printsrcinfo > .SRCINFO
 #aur graph .SRCINFO | tsort | tac > queue
-aur build --database Bitals --root /home/builder/bitalsrepo -a $OWNPACKAGE
+aur build --database Bitals --root /home/builder/bitalsrepo $OWNPACKAGE
 #sudo pacman -Sy --noconfirm $OWNPACKAGE
 #sudo pacman -Sc --noconfirm
