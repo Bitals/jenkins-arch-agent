@@ -1,6 +1,6 @@
 #! /bin/sh
 
-/opt/vpn.sh
+/opt/vpn.sh || exit 1
 
 cd /home/builder
 #sudo install -d /home/builder/bitalsrepo -o $USER

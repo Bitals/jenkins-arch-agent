@@ -22,7 +22,7 @@ RUN chown root:root /etc/makepkg.conf
 RUN mkdir /home/builder/aur && chown builder:builder /home/builder/aur
 RUN pacman -Syu git jq pacutils curl expect devtools --noconfirm
 
-RUN pacman -S --noconfirm jdk11-openjdk
+RUN pacman -S --noconfirm jdk17-openjdk
 
 
 ARG VERSION=4.12

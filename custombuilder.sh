@@ -1,6 +1,6 @@
 #! /bin/sh
 
-/opt/vpn.sh
+/opt/vpn.sh || exit 1
 
 gpg --import $BITALSARK
 gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
@@ -11,3 +11,4 @@ makepkg --printsrcinfo > .SRCINFO
 aur build --database Bitals --root /home/builder/bitalsrepo $OWNPACKAGE|| exit 1
 sudo pacman -Sy --noconfirm $OWNPACKAGE
 sudo pacman -Sc --noconfirm
+sudo kill $( cat /opt/piavpn-manual/pia_pid )
