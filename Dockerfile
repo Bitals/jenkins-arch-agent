@@ -5,7 +5,7 @@ USER root
 RUN groupadd -g 1000 builder
 RUN groupadd -g 1005 flutterusers
 RUN useradd -c "Building user" -d /home/builder -u 1000 -g 1000 -m builder
-RUN usermod -aG wheel flutterusers builder
+RUN usermod -aG wheel builder && usermod -aG flutterusers builder
 RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 #RUN sed '/#MAKEFLAGS/s/.*/MAKEFLAGS="-j24"/' /etc/makepkg.conf > /home/builder/makepkg && mv /home/builder/makepkg /etc/makepkg.conf
 #RUN echo 'MAKEFLAGS="-j24"' >> /etc/makepkg.conf && grep MAKEFLAGS /etc/makepkg.conf
