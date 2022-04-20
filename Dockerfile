@@ -21,7 +21,7 @@ COPY makepkg.conf /etc/makepkg.conf
 RUN chown root:root /etc/makepkg.conf
 
 RUN mkdir /home/builder/aur && chown builder:builder /home/builder/aur
-RUN pacman -Syu git jq pacutils curl expect devtools --noconfirm
+RUN pacman -Syu git jq pacutils curl expect devtools clang --noconfirm
 
 RUN pacman -S --noconfirm jdk17-openjdk
 
