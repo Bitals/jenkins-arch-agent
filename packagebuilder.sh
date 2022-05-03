@@ -12,6 +12,18 @@ cd /home/builder
 gpg --import $BITALSARK
 gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
 
+if [[ -z "$PGPFINGER" ]]; then
+    break
+else
+    gpg --recv-keys $PGPFINGER
+fi
+if [[ -z "$PGPLINK" ]]; then
+    break
+else
+    curl $PGPLINK > "$AURPACKAGE"-key
+    gpg --import "$AURPACKAGE"-key
+fi
+
 #sudo pacman -Sy --noconfirm
 
 #aur sync -A --noconfirm --noview --repo Bitals --root /home/builder/bitalsrepo paru
