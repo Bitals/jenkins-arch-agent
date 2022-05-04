@@ -5,7 +5,6 @@
 gpg --import $BITALSARK
 gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
 
-#cd $OWNPACKAGE
 makepkg --printsrcinfo > .SRCINFO
 #aur graph .SRCINFO | tsort | tac > queue
 #repo-remove /home/builder/bitalsrepo/Bitals.db.tar.gz $OWNPACKAGE
