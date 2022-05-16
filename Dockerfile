@@ -11,6 +11,8 @@ RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 #RUN echo 'MAKEFLAGS="-j24"' >> /etc/makepkg.conf && grep MAKEFLAGS /etc/makepkg.conf
 #RUN sed '/NoProgressBar/s/.*/#NoProgressBar/' /etc/pacman.conf > /home/builder/pacman && mv /home/builder/pacman /etc/pacman.conf
 
+COPY bash.bashrc /etc/bash.bashrc
+RUN chown root:root /etc/bash.bashrc
 COPY pacman.conf /etc/pacman.conf
 RUN chown root:root /etc/pacman.conf
 COPY BitalsPublic.key /home/builder/BitalsPublic.key
