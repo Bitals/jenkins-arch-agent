@@ -18,8 +18,9 @@ else
     curl $PGPLINK > "$AURPACKAGE"-key
     gpg --import "$AURPACKAGE"-key
 fi
-
-echo Building $AURPACKAGE
+echo Updating pacman databases...
+sudo pacman -Sy
+echo Building "$AURPACKAGE"...
 aur sync -A --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo $AURPACKAGE || exit 1 #sudo kill $( cat /opt/piavpn-manual/pia_pid ) #&& rm -rf /home/builder/.cache/
 sudo pacman -Sc --noconfirm
 sudo kill $( cat /opt/piavpn-manual/pia_pid )
