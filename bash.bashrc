@@ -19,6 +19,7 @@ case ${TERM} in
     ;;
 esac
 
-alias gcc="sccache gcc"
+#alias gcc="sccache gcc"
+export PATH="/usr/lib/ccache/bin/:$PATH"
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion

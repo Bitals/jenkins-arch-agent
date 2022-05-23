@@ -24,7 +24,7 @@ COPY makepkg.conf /etc/makepkg.conf
 RUN chown root:root /etc/makepkg.conf
 
 RUN mkdir /home/builder/aur && chown builder:builder /home/builder/aur
-RUN pacman -Syu git jq pacutils curl expect devtools clang --noconfirm
+RUN pacman -Syu --noconfirm git jq pacutils curl expect devtools clang lsb_release
 
 RUN pacman -S --noconfirm jdk17-openjdk
 
@@ -77,6 +77,10 @@ RUN pacman -S --noconfirm sccache && mkdir /home/builder/sccache && chown builde
 ENV RUSTC_WRAPPER=/usr/bin/sccache
 ENV SCCACHE_DIR=/home/builder/sccache
 ENV SCCACHE_CACHE_SIZE="50G"
+RUN pacman -S --noconfirm ccache && mkdir /home/builder/ccache && chown builder:builder /home/builder/ccache
+ENV CCACHE_SLOPPINESS=locale,time_macros
+ENV CCACHE_DIR=/home/builder/ccache
+ENV CCACHE_MAXSIZE="50G"
 
 COPY manual-connections /home/builder/manual-connections
 
