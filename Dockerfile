@@ -76,7 +76,7 @@ ENV CCACHE_MAXSIZE="50G"
 
 COPY manual-connections /home/builder/manual-connections
 
-RUN pacman -Sc --noconfirm
+#RUN pacman -Sc --noconfirm
 USER builder
 
 ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
