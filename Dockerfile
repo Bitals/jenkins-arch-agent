@@ -7,9 +7,6 @@ RUN groupadd -g 1005 flutterusers
 RUN useradd -c "Building user" -d /home/builder -u 1000 -g 1000 -m builder
 RUN usermod -aG wheel builder && usermod -aG flutterusers builder
 RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-#RUN sed '/#MAKEFLAGS/s/.*/MAKEFLAGS="-j24"/' /etc/makepkg.conf > /home/builder/makepkg && mv /home/builder/makepkg /etc/makepkg.conf
-#RUN echo 'MAKEFLAGS="-j24"' >> /etc/makepkg.conf && grep MAKEFLAGS /etc/makepkg.conf
-#RUN sed '/NoProgressBar/s/.*/#NoProgressBar/' /etc/pacman.conf > /home/builder/pacman && mv /home/builder/pacman /etc/pacman.conf
 
 COPY bash.bashrc /etc/bash.bashrc
 RUN chown root:root /etc/bash.bashrc
@@ -59,9 +56,6 @@ COPY jenkins-agent /usr/local/bin/jenkins-agent
 RUN chmod +x /usr/local/bin/jenkins-agent &&\
     ln -s /usr/local/bin/jenkins-agent /usr/local/bin/jenkins-slave
 
-# RUN echo "[Bitals]" >> /etc/pacman.conf
-# RUN echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf
-# RUN echo "Server = https://arch.bitals.xyz" >> /etc/pacman.conf
 RUN pacman -Sy --noconfirm aurutils
 
 COPY packagebuilder.sh /opt/packagebuilder.sh
@@ -70,8 +64,6 @@ COPY custombuilder.sh /opt/custombuilder.sh
 RUN chmod +x /opt/custombuilder.sh
 COPY vpn.sh /opt/vpn.sh
 RUN chmod +x /opt/vpn.sh
-
-#RUN mkdir /tmpbuilddir && chown builder:builder /tmpbuilddir
 
 RUN pacman -S --noconfirm sccache && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
 ENV RUSTC_WRAPPER=/usr/bin/sccache
@@ -84,7 +76,7 @@ ENV CCACHE_MAXSIZE="50G"
 
 COPY manual-connections /home/builder/manual-connections
 
-#RUN pacman -Sc --noconfirm
+RUN pacman -Sc --noconfirm
 USER builder
 
 ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
