@@ -21,5 +21,5 @@ while [[ $succ != true ]]; do
     fi
 done
 echo "Adding route to local network"
-sudo ip route add "192.168.88.0/24" via "172.18.0.1" dev "eth0"
+sudo ip route add "10.10/24" via "172.18.0.1" dev "eth0"
 echo "Public IP: $( curl https://2ip.ru )"
