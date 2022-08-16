@@ -10,7 +10,7 @@ echo "Connecting to PIA OpenVPN"
 cd /home/builder/manual-connections
 succ=false
 i=0
-while [[ $succ != true ]] || [[ $i -le 5 ]]; do
+while [[ $succ != true ]] && [[ $i -le 5 ]]; do
     sleep $((5*$i))s
     sudo VPN_PROTOCOL=openvpn_udp_standard DISABLE_IPV6="yes" AUTOCONNECT=true PIA_DNS=false PIA_PF=false PIA_USER=$PIA_USER PIA_PASS=$PIA_PASS ./run_setup.sh
     if [[ -z $( cat /opt/piavpn-manual/pia_pid ) ]]; then
