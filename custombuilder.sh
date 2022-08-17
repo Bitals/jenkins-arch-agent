@@ -5,6 +5,21 @@
 gpg --import $BITALSARK
 gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
 
+if [[ -z "$PGPFINGER" ]]; then
+    break
+else
+    gpg --recv-keys $PGPFINGER
+fi
+if [[ -z "$PGPLINK" ]]; then
+    break
+else
+    curl $PGPLINK > "$AURPACKAGE"-key
+    gpg --import "$AURPACKAGE"-key
+fi
+echo Updating pacman databases...
+sudo pacman -Syy
+echo Building "$OWNPACKAGE"...
+
 makepkg --printsrcinfo > .SRCINFO
 #aur graph .SRCINFO | tsort | tac > queue
 #repo-remove /home/builder/bitalsrepo/Bitals.db.tar.gz $OWNPACKAGE
