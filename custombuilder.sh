@@ -13,8 +13,8 @@ fi
 if [[ -z "$PGPLINK" ]]; then
     break
 else
-    curl $PGPLINK > "$AURPACKAGE"-key
-    gpg --import "$AURPACKAGE"-key
+    curl $PGPLINK > "$OWNPACKAGE"-key
+    gpg --import "$OWNPACKAGE"-key
 fi
 echo Updating pacman databases...
 sudo pacman -Syy
