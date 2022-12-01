@@ -1,6 +1,12 @@
 #! /bin/sh
 
-/opt/vpn.sh || exit 1
+#/opt/vpn.sh || exit 1
+pIP=$( curl https://2ip.ru )
+if [[ $pIP == "89.179.246.20" ]]; then
+    exit 1
+else
+    echo "Public IP: $pIP"
+fi
 
 gpg --import $BITALSARK
 gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
