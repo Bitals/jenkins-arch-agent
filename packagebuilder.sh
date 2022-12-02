@@ -29,4 +29,4 @@ sudo pacman -Syy
 echo Building "$AURPACKAGE"...
 aur sync -A --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo $AURPACKAGE || exit 1 || rm -rf /home/builder/.cache/aurutils/sync/$AURPACKAGE
 sudo pacman -Sc --noconfirm
-sudo kill $( cat /opt/piavpn-manual/pia_pid )
+#sudo kill $( cat /opt/piavpn-manual/pia_pid )

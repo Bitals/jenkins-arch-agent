@@ -36,4 +36,4 @@ makepkg --printsrcinfo > .SRCINFO
 aur build --database Bitals --root /home/builder/bitalsrepo $OWNPACKAGE|| exit 1
 sudo pacman -Sy --noconfirm $OWNPACKAGE || exit 1
 sudo pacman -Sc --noconfirm
-sudo kill $( cat /opt/piavpn-manual/pia_pid )
+#sudo kill $( cat /opt/piavpn-manual/pia_pid )
