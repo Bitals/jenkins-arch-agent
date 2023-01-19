@@ -2,7 +2,7 @@
 
 #/opt/vpn.sh || exit 1
 pIP=$( curl https://2ip.ru )
-if [[ $pIP == "93.90.41.145" ]]; then
+if [[ $pIP == "79.120.77.117" ]]; then
     echo "Public IP: "$pIP", exiting now"
     exit 1
 else
