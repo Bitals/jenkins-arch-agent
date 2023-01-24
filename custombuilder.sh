@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #/opt/vpn.sh || exit 1
-pIP=$( curl https://2ip.ru )
+pIP=$( curl https://ifconfig.me/ip )
 if [[ $pIP == "79.120.77.117" ]]; then
     exit 1
 else
