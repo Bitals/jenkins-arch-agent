@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #/opt/vpn.sh || exit 1
-pIP=$( curl 'https://api.ipify.org/' )
+pIP=$( curl 'https://api.ipify.org?format=raw' )
 if [[ $pIP != "193.138.7.176" ]]; then
     echo "Public IP: "$pIP", exiting now"
     exit 1
