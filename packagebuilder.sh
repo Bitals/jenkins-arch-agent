@@ -1,8 +1,8 @@
 #! /bin/sh
 
 #/opt/vpn.sh || exit 1
-pIP=$( curl https://ifconfig.me/ip )
-if [[ $pIP == "79.120.77.117" ]]; then
+pIP=$( curl 'https://api.ipify.org/' )
+if [[ $pIP != "193.138.7.176" ]]; then
     echo "Public IP: "$pIP", exiting now"
     exit 1
 else
