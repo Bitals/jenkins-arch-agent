@@ -28,6 +28,6 @@ fi
 echo Updating pacman databases...
 sudo pacman -Syy
 echo Building "$AURPACKAGE"...
-aur sync update-devel --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo || exit 1
+aur sync update-devel -A --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo || exit 1
 sudo pacman -Sc --noconfirm
 #sudo kill $( cat /opt/piavpn-manual/pia_pid )
