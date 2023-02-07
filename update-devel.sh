@@ -18,7 +18,7 @@ echo Updating pacman databases...
 sudo pacman -Syy
 echo Updating devel packages...
 aur sync \
-  --rebuild $(aur-vercmp-devel -database Bitals --root /home/builder/bitalsrepo |cut -f1 -d':') \
+  --rebuild $(aur-vercmp-devel --database Bitals --root /home/builder/bitalsrepo |cut -f1 -d':') \
   -A --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo\
   "$@"
 sudo pacman -Sc --noconfirm
