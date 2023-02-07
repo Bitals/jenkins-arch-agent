@@ -20,6 +20,6 @@ echo Updating devel packages...
 aur sync \
   --rebuild $(aur-vercmp-devel --database Bitals --root /home/builder/bitalsrepo |cut -f1 -d':') \
   -A --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo\
-  "$@"
+  "$@" || exit 1
 sudo pacman -Sc --noconfirm
 #sudo kill $( cat /opt/piavpn-manual/pia_pid )
