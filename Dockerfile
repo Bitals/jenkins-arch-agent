@@ -76,6 +76,8 @@ ENV CCACHE_MAXSIZE="50G"
 
 COPY manual-connections /home/builder/manual-connections
 
+COPY aurutils-plugins/lib/* /usr/local/bin/
+
 #RUN pacman -Sc --noconfirm
 USER builder
 
