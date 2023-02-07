@@ -17,6 +17,9 @@ gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
 echo Updating pacman databases...
 sudo pacman -Syy
 echo Updating devel packages...
-aur update-devel --database Bitals --root /home/builder/bitalsrepo
+aur sync \
+  --rebuild $(aur-vercmp-devel |cut -f1 -d':') \
+  -A --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo\
+  "$@"
 sudo pacman -Sc --noconfirm
 #sudo kill $( cat /opt/piavpn-manual/pia_pid )
