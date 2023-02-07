@@ -62,6 +62,8 @@ COPY packagebuilder.sh /opt/packagebuilder.sh
 RUN chmod +x /opt/packagebuilder.sh
 COPY custombuilder.sh /opt/custombuilder.sh
 RUN chmod +x /opt/custombuilder.sh
+COPY update-devel.sh /opt/update-devel.sh
+RUN chmod +x /opt/update-devel.sh
 COPY vpn.sh /opt/vpn.sh
 RUN chmod +x /opt/vpn.sh
 
