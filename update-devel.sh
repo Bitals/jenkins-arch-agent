@@ -20,7 +20,7 @@ sudo pacman -Syy
 echo Updating devel packages...
 
 
-/opt/aur-update-devel-fork.sh --database Bitals --root /home/builder/bitalsrepo --noconfirm --noview --sign || exit 1
+/opt/aur-update-devel-fork.sh --database Bitals --root /home/builder/bitalsrepo || exit 1
 
 
 sudo pacman -Sc --noconfirm

@@ -17,7 +17,7 @@ if [[ $(aur vercmp-devel "$@" | tee updates) ]]; then
             # required, or the command will terminate at the y/N prompt for
             # installing the dependency
             cut -d\  -f1 updates > vcs.txt
-            xargs -a vcs.txt aur sync --no-ver-argv --noconfirm "$@"
+            xargs -a vcs.txt aur sync --no-ver-argv --noconfirm --noview --sign "$@"
             ;;
     esac
 else
