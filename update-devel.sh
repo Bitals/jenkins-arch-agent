@@ -9,7 +9,8 @@ else
     echo "Public IP: $pIP"
 fi
 
-cd /home/builder
+mkdir /home/builder/devel
+cd /home/builder/devel
 
 gpg --import $BITALSARK
 gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
