@@ -76,7 +76,7 @@ ENV CCACHE_SLOPPINESS=locale,time_macros
 ENV CCACHE_DIR=/home/builder/ccache
 ENV CCACHE_MAXSIZE="50G"
 
-COPY manual-connections /home/builder/manual-connections
+COPY manual-connections /opt/manual-connections
 
 COPY aurutils-plugins/lib/* /usr/local/bin/
 

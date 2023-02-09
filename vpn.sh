@@ -7,7 +7,7 @@ sudo mkdir -p /dev/net
 sudo mknod /dev/net/tun c 10 200
 sudo chmod 0666 /dev/net/tun
 echo "Connecting to PIA OpenVPN"
-cd /home/builder/manual-connections
+cd /opt/manual-connections
 succ=false
 i=0
 while [[ $succ != true ]] && [[ $i -le 5 ]]; do
