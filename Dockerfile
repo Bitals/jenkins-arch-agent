@@ -64,6 +64,8 @@ COPY custombuilder.sh /opt/custombuilder.sh
 RUN chmod +x /opt/custombuilder.sh
 COPY update-devel.sh /opt/update-devel.sh
 RUN chmod +x /opt/update-devel.sh
+COPY aur-update-devel-fork.sh /opt/aur-update-devel-fork.sh
+RUN chmod +x /opt/aur-update-devel-fork.sh
 COPY vpn.sh /opt/vpn.sh
 RUN chmod +x /opt/vpn.sh
 
