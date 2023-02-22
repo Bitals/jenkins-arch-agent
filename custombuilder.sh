@@ -1,8 +1,9 @@
-#! /bin/sh
+#!/usr/bin/env bash
 
 #/opt/vpn.sh || exit 1
 pIP=$( curl 'https://api.ipify.org/?format=raw' )
 if [[ $pIP != "193.138.7.176" ]]; then
+    echo "Public IP: $pIP, exiting now"
     exit 1
 else
     echo "Public IP: $pIP"
@@ -11,14 +12,11 @@ fi
 gpg --import $BITALSARK
 gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
 
-if [[ -z "$PGPFINGER" ]]; then
-    break
-else
+
+if [[ -n "$PGPFINGER" ]]; then
     gpg --recv-keys $PGPFINGER
 fi
-if [[ -z "$PGPLINK" ]]; then
-    break
-else
+if [[ -n "$PGPLINK" ]]; then
     curl $PGPLINK > "$OWNPACKAGE"-key
     gpg --import "$OWNPACKAGE"-key
 fi
