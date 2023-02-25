@@ -20,10 +20,10 @@ sudo pacman -Syy
 echo Updating devel packages...
 
 
-if [[ $(aur vercmp-devel -database Bitals --root /home/builder/bitalsrepo | grep $AURPACKAGE | tee updates) ]]; then
+if [[ $(aur vercmp-devel --database Bitals --root /home/builder/bitalsrepo | tee updates) ]]; then
     printf "\n$(column -t updates)\n\n$(wc -l updates) found.  "
-    cut -d\  -f1 updates > vcs.txt
-    xargs -a vcs.txt aur sync --no-ver-argv --noconfirm --noview --sign -database Bitals --root /home/builder/bitalsrepo || exit 1
+    grep $AURPACKAGE updates| cut -d\  -f1  > vcs.txt
+    xargs -a vcs.txt aur sync --no-ver-argv --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo || exit 1
 else
     msg2 "No updates found"
 fi
