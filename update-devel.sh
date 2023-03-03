@@ -2,7 +2,7 @@
 
 #/opt/vpn.sh || exit 1
 pIP=$( curl 'https://api.ipify.org/?format=raw' )
-if [[ $pIP != "193.138.7.176" ]]; then
+if [[ $pIP != "193.138.7.216" ]]; then
     echo "Public IP: $pIP, exiting now"
     exit 1
 else
@@ -25,7 +25,7 @@ if [[ $(aur vercmp-devel --database Bitals --root /home/builder/bitalsrepo | tee
     grep $AURPACKAGE updates| cut -d\  -f1  > vcs.txt
     xargs -a vcs.txt aur sync --no-ver-argv --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo || exit 1
 else
-    msg2 "No updates found"
+    echo "No updates found"
 fi
 #/opt/aur-update-devel-fork.sh --database Bitals --root /home/builder/bitalsrepo || exit 1
 
