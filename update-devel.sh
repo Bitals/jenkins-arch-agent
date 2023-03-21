@@ -23,7 +23,11 @@ echo Updating devel packages...
 if [[ $(aur vercmp-devel --database Bitals --root /home/builder/bitalsrepo | tee updates) ]]; then
     printf "\n$(column -t updates)\n\n$(wc -l updates) found.  "
     grep $AURPACKAGE updates| cut -d\  -f1  > vcs.txt
-    xargs -a vcs.txt aur sync --no-ver-argv --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo || exit 1
+    if [[ -n $( cat vcs.txt ) ]]; then
+        xargs -a vcs.txt aur sync --no-ver-argv --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo || exit 1
+    else
+        echo "No updates found"
+    fi
 else
     echo "No updates found"
 fi
