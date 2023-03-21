@@ -27,9 +27,11 @@ if [[ $(aur vercmp-devel --database Bitals --root /home/builder/bitalsrepo | tee
         xargs -a vcs.txt aur sync --no-ver-argv --noconfirm --noview --sign --database Bitals --root /home/builder/bitalsrepo || exit 1
     else
         echo "No updates found"
+        exit 0
     fi
 else
     echo "No updates found"
+    exit 0
 fi
 #/opt/aur-update-devel-fork.sh --database Bitals --root /home/builder/bitalsrepo || exit 1
 
