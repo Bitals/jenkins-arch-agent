@@ -14,7 +14,7 @@ COPY pacman.conf /etc/pacman.conf
 RUN chown root:root /etc/pacman.conf
 COPY BitalsPublic.key /home/builder/BitalsPublic.key
 RUN pacman-key --init && pacman-key --populate archlinux && pacman-key -a /home/builder/BitalsPublic.key && \
-    pacman-key --finger 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C && pacman-key --lsign-key 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C && \
+    pacman-key --finger B85CCC7E84084D98FDCA5CB9619D32E653C5E767 && pacman-key --lsign-key B85CCC7E84084D98FDCA5CB9619D32E653C5E767 && \
     gpg --import /home/builder/BitalsPublic.key && \
     rm -rf /home/builder/BitalsPublic.key
 COPY makepkg.conf /etc/makepkg.conf
