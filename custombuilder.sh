@@ -10,7 +10,7 @@ else
 fi
 
 gpg --import $BITALSARK
-gpg --fingerprint 5D11E19794FC8007AFE3600CEB70C01D5CEABF2C
+gpg --fingerprint B85CCC7E84084D98FDCA5CB9619D32E653C5E767
 
 
 if [[ -n "$PGPFINGER" ]]; then
