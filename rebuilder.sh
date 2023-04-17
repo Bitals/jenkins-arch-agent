@@ -29,6 +29,6 @@ for i in $( find .cache/aurutils/sync/*/.SRCINFO -exec grep -sm 1 "pkgname" {} \
     echo
     echo "AURPACKAGE=" $i >> /home/builder/rebuild.log
     echo
-	aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo $i >> /home/builder/rebuild.log
+    aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo "$i" 2> >(tee -a /home/builder/rebuild.log >&2)
 	sudo pacman -Sc --noconfirm
 done
