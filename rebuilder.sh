@@ -24,7 +24,11 @@ fi
 echo Updating pacman databases...
 sudo pacman -Syy
 echo Rebuilding everything...
+mv /home/builder/rebuild.log /home/builder/rebuild.log.old
 for i in $( find .cache/aurutils/sync/*/.SRCINFO -exec grep -sm 1 "pkgname" {} \;|tr -d ' '|cut -d "=" -f 2 ); do
-	aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo $i > rebuild.log
+    echo
+    echo "AURPACKAGE=" $i >> /home/builder/rebuild.log
+    echo
+	aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo $i >> /home/builder/rebuild.log
 	sudo pacman -Sc --noconfirm
 done
