@@ -23,12 +23,12 @@ if [[ -n "$PGPLINK" ]]; then
 fi
 echo Updating pacman databases...
 sudo pacman -Syy
-echo Rebuilding everything...
-mv /home/builder/rebuild.log /home/builder/rebuild.log.old
-for i in $( find .cache/aurutils/sync/*/.SRCINFO -exec grep -sm 1 "pkgname" {} \;|tr -d ' '|cut -d "=" -f 2 ); do
-    echo
-    echo "AURPACKAGE=" $i >> /home/builder/rebuild.log
-    echo
-    aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo "$i" 2> >(tee -a /home/builder/rebuild.log >&2)
-	sudo pacman -Sc --noconfirm
-done
+echo Rebuilding $AURPACKAGE...
+#mv /home/builder/rebuild.log /home/builder/rebuild.log.old
+#for i in $( find .cache/aurutils/sync/*/.SRCINFO -exec grep -sm 1 "pkgname" {} \;|tr -d ' '|cut -d "=" -f 2 ); do
+#    echo
+#    echo "AURPACKAGE=" $i >> /home/builder/rebuild.log
+#    echo
+aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo "$AURPACKAGE"|| exit 1
+sudo pacman -Sc --noconfirm
+#done
