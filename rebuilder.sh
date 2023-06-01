@@ -30,6 +30,7 @@ echo Rebuilding $AURPACKAGE...
 #    echo "AURPACKAGE=" $i >> /home/builder/rebuild.log
 #    echo
 aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo "$AURPACKAGE"|| exit 1
-sudo pacman -Sc --noconfirm
+#sudo pacman -Sc --noconfirm
+sudo pacleaner -n 2 -m --delete --no-confirm
 #done
 #sudo kill $( cat /opt/piavpn-manual/pia_pid )
