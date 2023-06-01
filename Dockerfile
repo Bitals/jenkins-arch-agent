@@ -21,7 +21,9 @@ COPY makepkg.conf /etc/makepkg.conf
 RUN chown root:root /etc/makepkg.conf
 
 RUN mkdir /home/builder/aur && chown builder:builder /home/builder/aur
-RUN pacman -Syu --noconfirm multilib-devel git jq pacutils curl expect devtools clang lsb-release pacleaner
+RUN pacman -Syu --noconfirm multilib-devel git jq pacutils curl expect devtools clang pyenv lsb-release pacleaner
+
+RUN mkdir /root/.pyenv/ && pyenv global system
 
 RUN pacman -S --noconfirm jdk17-openjdk
 
@@ -40,6 +42,7 @@ RUN pacman -S --noconfirm git-lfs fontconfig \
 
 
 USER builder
+RUN mkdir /home/builder/.pyenv/ && pyenv global system
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
 RUN mkdir /home/${user}/.jenkins && mkdir -p ${AGENT_WORKDIR}
 VOLUME /home/${user}/.jenkins
