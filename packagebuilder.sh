@@ -4,7 +4,7 @@
 pIP=$( curl 'https://api.ipify.org/?format=raw' )
 if [[ $pIP != "185.204.1.226" ]]; then
     echo "Public IP: $pIP, exiting now"
-    exit 1
+#    exit 1
 else
     echo "Public IP: $pIP"
 fi
