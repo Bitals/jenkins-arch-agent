@@ -73,6 +73,8 @@ COPY rebuilder.sh /opt/rebuilder.sh
 RUN chmod +x /opt/rebuilder.sh
 COPY vpn.sh /opt/vpn.sh
 RUN chmod +x /opt/vpn.sh
+COPY runner.sh /opt/runner.sh
+RUN chmod +x /opt/runner.sh
 
 RUN pacman -S --noconfirm sccache && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
 ENV RUSTC_WRAPPER=/usr/bin/sccache
