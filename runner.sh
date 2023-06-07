@@ -8,6 +8,7 @@ if [[ $pIP == "79.120.77.117" ]]; then
 else
     echo "Public IP: $pIP"
 fi
+pIP=""
 
 cd /home/builder||exit 1
 
