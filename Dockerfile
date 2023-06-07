@@ -61,6 +61,15 @@ RUN chmod +x /usr/local/bin/jenkins-agent &&\
 
 RUN pacman -Sy --noconfirm aurutils
 
+RUN pacman -S --noconfirm sccache && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
+ENV RUSTC_WRAPPER=/usr/bin/sccache
+ENV SCCACHE_DIR=/home/builder/sccache
+ENV SCCACHE_CACHE_SIZE="100G"
+RUN pacman -S --noconfirm ccache && mkdir /home/builder/ccache && chown builder:builder /home/builder/ccache
+ENV CCACHE_SLOPPINESS=locale,time_macros
+ENV CCACHE_DIR=/home/builder/ccache
+ENV CCACHE_MAXSIZE="100G"
+
 COPY packagebuilder.sh /opt/packagebuilder.sh
 RUN chmod +x /opt/packagebuilder.sh
 COPY custombuilder.sh /opt/custombuilder.sh
@@ -75,15 +84,6 @@ COPY vpn.sh /opt/vpn.sh
 RUN chmod +x /opt/vpn.sh
 COPY runner.sh /opt/runner.sh
 RUN chmod +x /opt/runner.sh
-
-RUN pacman -S --noconfirm sccache && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
-ENV RUSTC_WRAPPER=/usr/bin/sccache
-ENV SCCACHE_DIR=/home/builder/sccache
-ENV SCCACHE_CACHE_SIZE="100G"
-RUN pacman -S --noconfirm ccache && mkdir /home/builder/ccache && chown builder:builder /home/builder/ccache
-ENV CCACHE_SLOPPINESS=locale,time_macros
-ENV CCACHE_DIR=/home/builder/ccache
-ENV CCACHE_MAXSIZE="100G"
 
 COPY manual-connections /opt/manual-connections
 
