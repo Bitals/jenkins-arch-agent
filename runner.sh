@@ -28,7 +28,7 @@ if [[ $Action == "default" ]]; then
 elif [[ $Action == "custom" ]]; then
     /opt/custombuilder.sh
 elif [[ $Action == "force-rebuild" ]]; then
-    /opt/packagebuilder.sh
+    /opt/rebuilder.sh
 elif [[ $Action == "update-devel" ]]; then
-    /opt/packagebuilder.sh
+    /opt/update-devel.sh
 fi
