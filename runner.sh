@@ -23,7 +23,7 @@ if [[ -n "$PGPLINK" ]]; then
     gpg --import "$AURPACKAGE"-key
 fi
 
-if [[ -z $Action ]] && [[ $Action == "default" ]]; then
+if [[ -z $Action ]] || [[ $Action == "default" ]]; then
     /opt/packagebuilder.sh
 elif [[ $Action == "custom" ]]; then
     /opt/custombuilder.sh
