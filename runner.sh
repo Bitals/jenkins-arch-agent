@@ -32,3 +32,8 @@ elif [[ $Action == "force-rebuild" ]]; then
 elif [[ $Action == "update-devel" ]]; then
     /opt/update-devel.sh
 fi
+
+
+#sudo pacman -Sc --noconfirm
+##When aurutils will get a sane version number again
+#sudo pacleaner -n 2 -m --delete --no-confirm
