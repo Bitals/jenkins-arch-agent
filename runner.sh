@@ -36,4 +36,4 @@ fi
 
 #sudo pacman -Sc --noconfirm
 ##When aurutils will get a sane version number again
-#sudo pacleaner -n 2 -m --delete --no-confirm
+sudo pacleaner -n 2 -m --delete --no-confirm
