@@ -24,13 +24,13 @@ if [[ -n "$PGPLINK" ]]; then
 fi
 
 if [[ -z $Action ]] || [[ $Action == "default" ]]; then
-    /opt/packagebuilder.sh
+    /opt/packagebuilder.sh || exit 1
 elif [[ $Action == "custom" ]]; then
-    /opt/custombuilder.sh
+    /opt/custombuilder.sh || exit 1
 elif [[ $Action == "force-rebuild" ]]; then
-    /opt/rebuilder.sh
+    /opt/rebuilder.sh || exit 1
 elif [[ $Action == "update-devel" ]]; then
-    /opt/update-devel.sh
+    /opt/update-devel.sh || exit 1
 fi
 
 
