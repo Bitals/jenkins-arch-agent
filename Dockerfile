@@ -21,9 +21,7 @@ COPY makepkg.conf /etc/makepkg.conf
 RUN chown root:root /etc/makepkg.conf
 
 RUN mkdir /home/builder/aur && chown builder:builder /home/builder/aur
-RUN pacman -Syu --noconfirm multilib-devel git jq pacutils curl expect devtools clang pyenv lsb-release pacleaner
-
-RUN mkdir /root/.pyenv/ && pyenv global system
+RUN pacman -Syu --noconfirm multilib-devel git jq pacutils curl expect devtools clang lsb-release pacleaner
 
 RUN pacman -S --noconfirm jdk17-openjdk
 
@@ -41,8 +39,6 @@ RUN pacman -S --noconfirm git-lfs fontconfig \
   && ln -sf /usr/share/jenkins/agent.jar /usr/share/jenkins/slave.jar
 
 
-USER builder
-RUN mkdir /home/builder/.pyenv/ && pyenv global system
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
 RUN mkdir /home/${user}/.jenkins && mkdir -p ${AGENT_WORKDIR}
 VOLUME /home/${user}/.jenkins
@@ -89,8 +85,10 @@ COPY manual-connections /opt/manual-connections
 
 COPY aurutils-plugins/lib/* /usr/local/bin/
 
-RUN pacman -S --noconfirm python-build python-installer
+RUN pacman -S --noconfirm python-build python-installer python-setuptools pyenv
+RUN mkdir /root/.pyenv/ && pyenv global system
 #RUN pacman -Sc --noconfirm
 USER builder
+RUN mkdir /home/builder/.pyenv/ && pyenv global system
 
 ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
