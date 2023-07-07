@@ -89,6 +89,7 @@ COPY manual-connections /opt/manual-connections
 
 COPY aurutils-plugins/lib/* /usr/local/bin/
 
+RUN pacman -S --noconfirm python-build python-installer
 #RUN pacman -Sc --noconfirm
 USER builder
 
