@@ -21,3 +21,6 @@ fi
 #/opt/aur-update-devel-fork.sh --database Bitals --root /home/builder/bitalsrepo || exit 1
 
 #sudo kill $( cat /opt/piavpn-manual/pia_pid )
+
+#This crap is really getting on my nerves
+rm -rf /home/builder/.cache/aurutils/sync/quickmedia-git/src/emoji
