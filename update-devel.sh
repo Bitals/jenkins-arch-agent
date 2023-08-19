@@ -23,4 +23,4 @@ fi
 #sudo kill $( cat /opt/piavpn-manual/pia_pid )
 
 #This crap is really getting on my nerves
-rm -rf /home/builder/.cache/aurutils/sync/quickmedia-git/src/emoji
+rm -rf /home/builder/.cache/aurutils/sync/*-git/

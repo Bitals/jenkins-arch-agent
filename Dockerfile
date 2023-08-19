@@ -20,7 +20,7 @@ RUN pacman-key --init && pacman-key --populate archlinux && pacman-key -a /home/
 COPY makepkg.conf /etc/makepkg.conf
 RUN chown root:root /etc/makepkg.conf
 
-RUN mkdir /home/builder/aur && chown builder:builder /home/builder/aur
+RUN mkdir /home/builder/aur && chown -R builder:builder /home/builder/aur
 RUN pacman -Syu --noconfirm multilib-devel git jq pacutils curl expect devtools clang lsb-release pacleaner
 
 RUN pacman -S --noconfirm jdk17-openjdk
@@ -87,6 +87,7 @@ COPY aurutils-plugins/lib/* /usr/local/bin/
 
 RUN pacman -S --noconfirm python-build python-installer python-setuptools pyenv
 RUN mkdir /root/.pyenv/ && pyenv global system
+RUN chown -R builder:builder /home/builder
 #RUN pacman -Sc --noconfirm
 USER builder
 RUN mkdir /home/builder/.pyenv/ && pyenv global system
