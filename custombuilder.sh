@@ -4,7 +4,7 @@ echo Updating pacman databases...
 sudo pacman -Syy
 echo Building "$OWNPACKAGE"...
 
-cd /home/builder/workspace/AUR/"$OWNPACKAGE"
+cd /home/builder/workspace/AUR/"$OWNPACKAGE" || exit 1
 #makepkg --printsrcinfo > .SRCINFO
 #aur graph .SRCINFO | tsort | tac > queue
 #repo-remove /home/builder/bitalsrepo/Bitals.db.tar.gz $OWNPACKAGE
