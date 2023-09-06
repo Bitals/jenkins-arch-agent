@@ -1,7 +1,3 @@
-[submodule "manual-connections"]
-	path = manual-connections
-	url = https://github.com/pia-foss/manual-connections.git
-	branch = master
 [submodule "aurutils-plugins"]
 	path = aurutils-plugins
 	url = https://github.com/jrudess/aurutils-plugins.git
