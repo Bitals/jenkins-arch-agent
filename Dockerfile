@@ -76,8 +76,6 @@ COPY aur-update-devel-fork.sh /opt/aur-update-devel-fork.sh
 RUN chmod +x /opt/aur-update-devel-fork.sh
 COPY rebuilder.sh /opt/rebuilder.sh
 RUN chmod +x /opt/rebuilder.sh
-COPY vpn.sh /opt/vpn.sh
-RUN chmod +x /opt/vpn.sh
 COPY runner.sh /opt/runner.sh
 RUN chmod +x /opt/runner.sh
 
