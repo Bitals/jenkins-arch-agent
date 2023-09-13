@@ -81,8 +81,6 @@ RUN chmod +x /opt/vpn.sh
 COPY runner.sh /opt/runner.sh
 RUN chmod +x /opt/runner.sh
 
-COPY manual-connections /opt/manual-connections
-
 COPY aurutils-plugins/lib/* /usr/local/bin/
 
 RUN pacman -S --noconfirm python-build python-installer python-setuptools pyenv
