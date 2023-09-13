@@ -1,1 +1,1 @@
-SENPAI DON'T LOOK
+An Archlinux Docker container ready to act as a Jenkins Agent, intended for building and maintaining a custom Arch Repository.
