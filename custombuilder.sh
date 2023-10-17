@@ -13,7 +13,7 @@ cd /home/builder/workspace/AUR/"$OWNPACKAGE" || exit 1
 # rm -rf /home/builder/
 # rm -rf /home/builder/
 deps=""
-for i in $( grep "depends" .SRCINFO|cut -d "=" -f 2 ); do
+for i in $( grep "depends" .SRCINFO|cut -d "=" -f 2|cut -d ":" -f 1 ); do
     deps+="$i "
 done
 sudo pacman -S --noconfirm $deps
