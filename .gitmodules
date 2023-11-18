@@ -1,4 +1,0 @@
-[submodule "aurutils-plugins"]
-	path = aurutils-plugins
-	url = https://github.com/jrudess/aurutils-plugins.git
-	branch = master
