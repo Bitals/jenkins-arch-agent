@@ -72,14 +72,12 @@ COPY custombuilder.sh /opt/custombuilder.sh
 RUN chmod +x /opt/custombuilder.sh
 COPY update-devel.sh /opt/update-devel.sh
 RUN chmod +x /opt/update-devel.sh
-COPY aur-update-devel-fork.sh /opt/aur-update-devel-fork.sh
-RUN chmod +x /opt/aur-update-devel-fork.sh
+COPY update-devel.sh /opt/update-devel.sh
+RUN chmod +x /opt/update-devel.sh
 COPY rebuilder.sh /opt/rebuilder.sh
 RUN chmod +x /opt/rebuilder.sh
 COPY runner.sh /opt/runner.sh
 RUN chmod +x /opt/runner.sh
-
-COPY aurutils-plugins/lib/* /usr/local/bin/
 
 RUN pacman -S --noconfirm python-build python-installer python-setuptools pyenv
 RUN mkdir /root/.pyenv/ && pyenv global system
