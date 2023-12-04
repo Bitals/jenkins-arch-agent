@@ -4,7 +4,7 @@ echo Updating pacman databases...
 sudo pacman -Syy
 echo Updating devel packages...
 
-repover=$( pacman -Qi "$AURPACKAGE"|grep Version|sed -E 's/Version         : //' )
+repover=$( pacman -Si "$AURPACKAGE"|grep Version|sed -E 's/Version         : //' )
 cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE"||exit
 makepkg -o
 gitver=$( bash -c "source PKGBUILD && pkgver" )
