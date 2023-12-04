@@ -14,7 +14,7 @@ makepkg -do
 gitver=$( grep pkgver= PKGBUILD|cut -d "=" -f 2 )-$( grep pkgrel= PKGBUILD|cut -d "=" -f 2 )
 echo Repo: $repover
 echo Source: $gitver
-if [[ -n "$repover" && "$repover" != "$gitver" ]]; then
+if [[ -n "$gitver" && "$repover" != "$gitver" ]]; then
     /opt/rebuilder.sh || exit 1
 else
     echo "No updates found"
