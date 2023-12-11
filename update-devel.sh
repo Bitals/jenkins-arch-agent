@@ -10,7 +10,7 @@ if [ ! -d /home/builder/.cache/aurutils/sync/"$AURPACKAGE" ]; then
     git clone https://aur.archlinux.org/"$AURPACKAGE".git || exit 1
 fi
 cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE" || exit 1
-makepkg -do
+makepkg -do || exit 1
 gitver=$( grep pkgver= PKGBUILD|cut -d "=" -f 2 )-$( grep pkgrel= PKGBUILD|cut -d "=" -f 2 )
 echo Repo: $repover
 echo Source: $gitver
