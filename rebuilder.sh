@@ -8,6 +8,8 @@ echo Rebuilding $AURPACKAGE...
 #    echo
 #    echo "AURPACKAGE=" $i >> /home/builder/rebuild.log
 #    echo
+cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE" || exit 1
+makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm|| exit 1
 aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo "$AURPACKAGE"|| exit 1
 #done
 #sudo kill $( cat /opt/piavpn-manual/pia_pid )
