@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-#/opt/vpn.sh || exit 1
-pIP=$( curl 'https://bitals.xyz/ipify/?format=raw' )
-if [[ $pIP == "79.120.77.117" ]]; then
-    echo "Public IP: $pIP, exiting now"
-    exit 1
-else
-    echo "Public IP: $pIP"
-fi
-pIP=""
-
 cd /home/builder||exit 1
 
 gpg --import $BITALSARK
@@ -35,4 +25,5 @@ fi
 
 #sudo pacman -Sc --noconfirm
 ##When aurutils will get a sane version number again
-sudo pacleaner -n 2 -m --delete --no-confirm
+#sudo pacleaner -n 2 -m --delete --no-confirm
+#TODO: write a custom sane cleaner affecting only the job package
