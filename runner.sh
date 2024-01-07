@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-cd /home/builder||exit 1
+cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE"||exit 1
+git clean -dfx
 
 gpg --import $BITALSARK
 gpg --fingerprint B85CCC7E84084D98FDCA5CB9619D32E653C5E767
