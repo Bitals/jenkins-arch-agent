@@ -6,6 +6,8 @@ if [ ! -d /home/builder/.cache/aurutils/sync/"$AURPACKAGE" ]; then
     cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE"|| exit 1
 fi
 git clean -dfx
+makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm || makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm || exit 1
+
 
 gpg --import $BITALSARK
 gpg --fingerprint B85CCC7E84084D98FDCA5CB9619D32E653C5E767
