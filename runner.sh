@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE"||exit 1
+if [ ! -d /home/builder/.cache/aurutils/sync/"$AURPACKAGE" ]; then
+    cd /home/builder/.cache/aurutils/sync/|| exit 1
+    git clone https://aur.archlinux.org/"$AURPACKAGE".git || exit 1
+    cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE"|| exit 1
+fi
 git clean -dfx
 
 gpg --import $BITALSARK
