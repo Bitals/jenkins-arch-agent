@@ -2,15 +2,6 @@
 
 gpg --import $BITALSARK
 gpg --fingerprint B85CCC7E84084D98FDCA5CB9619D32E653C5E767
-
-if [ ! -d /home/builder/.cache/aurutils/sync/"$AURPACKAGE" ]; then
-    cd /home/builder/.cache/aurutils/sync/|| exit 1
-    git clone https://aur.archlinux.org/"$AURPACKAGE".git || exit 1
-    cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE"|| exit 1
-fi
-git clean -dfx
-makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm || makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm || exit 1
-
 if [[ -n "$PGPFINGER" ]]; then
     gpg --recv-keys $PGPFINGER
 fi
@@ -18,6 +9,10 @@ if [[ -n "$PGPLINK" ]]; then
     curl $PGPLINK > "$AURPACKAGE"-key
     gpg --import "$AURPACKAGE"-key
 fi
+
+echo Updating pacman databases...
+sudo pacman -Syy
+
 
 if [[ -z $Action ]] || [[ $Action == "default" ]]; then
     /opt/packagebuilder.sh || exit 1

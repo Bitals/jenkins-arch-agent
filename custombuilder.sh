@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo Updating pacman databases...
-sudo pacman -Syy
 echo Building "$OWNPACKAGE"...
 
 cd /home/builder/workspace/AUR/"$OWNPACKAGE" || exit 1

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo Updating pacman databases...
-sudo pacman -Syy
 echo Rebuilding $AURPACKAGE...
 #mv /home/builder/rebuild.log /home/builder/rebuild.log.old
 #for i in $( find .cache/aurutils/sync/*/.SRCINFO -exec grep -sm 1 "pkgname" {} \;|tr -d ' '|cut -d "=" -f 2 ); do
@@ -11,6 +9,7 @@ echo Rebuilding $AURPACKAGE...
 if [ ! -d /home/builder/.cache/aurutils/sync/"$AURPACKAGE" ]; then
     cd /home/builder/.cache/aurutils/sync/|| exit 1
     git clone https://aur.archlinux.org/"$AURPACKAGE".git || exit 1
+    cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE" || exit 1
 fi
 cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE" || exit 1
 makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm|| exit 1
