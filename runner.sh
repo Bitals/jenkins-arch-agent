@@ -13,6 +13,7 @@ fi
 echo Updating pacman databases...
 sudo pacman -Syy
 
+#TODO: replace $AURPACKAGE and $OWNPACKAGE with $PACKAGE
 
 if [[ -z $Action ]] || [[ $Action == "default" ]]; then
     /opt/packagebuilder.sh || exit 1

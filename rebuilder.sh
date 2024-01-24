@@ -12,7 +12,7 @@ if [ ! -d /home/builder/.cache/aurutils/sync/"$AURPACKAGE" ]; then
     cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE" || exit 1
 fi
 cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE" || exit 1
-makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm|| exit 1
+makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm|| makepkg -so --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm || exit 1
 aur sync -A --noconfirm --noview --rebuild --sign --database Bitals --root /home/builder/bitalsrepo "$AURPACKAGE"|| exit 1
 #done
 #sudo kill $( cat /opt/piavpn-manual/pia_pid )
