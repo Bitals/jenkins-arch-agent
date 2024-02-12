@@ -15,6 +15,7 @@ fi
 src=$(ls /home/builder/.cache/aurutils/sync/"$AURPACKAGE"/src)
 if [ -z "$src" ]; then
     cd /home/builder/.cache/aurutils/sync/"$AURPACKAGE" || exit 1
+    git reset --hard
     git pull || exit 1
     makepkg -do --nocheck --noprepare --noconfirm|| exit 1
 fi
