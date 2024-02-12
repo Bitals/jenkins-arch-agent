@@ -4,7 +4,7 @@ echo Updating devel packages...
 
 #TODO: Handle $AURPACKAGE arrays
 
-repover=$( pacman -Si $AURPACKAGE|grep Version|sed -E 's/Version         : //' )
+repover=$( pacman -Si "$AURPACKAGE"|grep Version|sed -E 's/Version         : //' )
 if [ ! -d /home/builder/.cache/aurutils/sync/"$AURPACKAGE" ]; then
     cd /home/builder/.cache/aurutils/sync/|| exit 1
     git clone https://aur.archlinux.org/"$AURPACKAGE".git || exit 1
