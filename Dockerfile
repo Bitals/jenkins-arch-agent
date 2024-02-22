@@ -66,6 +66,8 @@ ENV CCACHE_SLOPPINESS=locale,time_macros
 ENV CCACHE_DIR=/home/builder/ccache
 ENV CCACHE_MAXSIZE="100G"
 
+ENV CARGO_BUILD_JOBS=24
+
 COPY packagebuilder.sh /opt/packagebuilder.sh
 RUN chmod +x /opt/packagebuilder.sh
 COPY custombuilder.sh /opt/custombuilder.sh
