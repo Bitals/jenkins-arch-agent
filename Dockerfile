@@ -57,7 +57,7 @@ RUN chmod +x /usr/local/bin/jenkins-agent &&\
 
 RUN pacman -Sy --noconfirm aurutils
 
-RUN pacman -S --noconfirm sccache && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
+RUN pacman -S --noconfirm sccache memcached && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
 ENV RUSTC_WRAPPER=/usr/bin/sccache
 ENV SCCACHE_DIR=/home/builder/sccache
 ENV SCCACHE_CACHE_SIZE="100G"
