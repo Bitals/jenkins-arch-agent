@@ -14,7 +14,7 @@ COPY pacman.conf /etc/pacman.conf
 RUN chown root:root /etc/pacman.conf
 COPY BitalsPublic.key /home/builder/BitalsPublic.key
 RUN pacman-key --init && pacman-key --populate archlinux && pacman-key -a /home/builder/BitalsPublic.key && \
-    pacman-key --finger B85CCC7E84084D98FDCA5CB9619D32E653C5E767 && pacman-key --lsign-key B85CCC7E84084D98FDCA5CB9619D32E653C5E767 && \
+    pacman-key --finger 6EE846D21B2D275374676D9893B0349A16DD4C4C && pacman-key --lsign-key 6EE846D21B2D275374676D9893B0349A16DD4C4C && \
     gpg --import /home/builder/BitalsPublic.key && \
     rm -rf /home/builder/BitalsPublic.key
 COPY makepkg.conf /etc/makepkg.conf
@@ -57,7 +57,7 @@ RUN chmod +x /usr/local/bin/jenkins-agent &&\
 
 RUN pacman -Sy --noconfirm aurutils
 
-RUN pacman -S --noconfirm sccache memcached && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
+RUN pacman -S --noconfirm sccache && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
 ENV RUSTC_WRAPPER=/usr/bin/sccache
 ENV SCCACHE_DIR=/home/builder/sccache
 ENV SCCACHE_CACHE_SIZE="100G"
