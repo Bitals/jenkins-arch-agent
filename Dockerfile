@@ -26,7 +26,7 @@ RUN pacman -Syu --noconfirm multilib-devel git jq pacutils curl expect devtools 
 RUN pacman -S --noconfirm jdk17-openjdk
 
 
-ARG VERSION=4.12
+ARG VERSION=3206.vb_15dcf73f6a_9
 ARG user=builder
 ARG group=builder
 ARG uid=1000
@@ -51,7 +51,7 @@ WORKDIR /home/${user}
 USER root
 #RUN cd /home/builder/aur/aurutils && pacman -U --noconfirm aurutils-9.5-1-any.pkg.tar.zst
 
-COPY jenkins-agent /usr/local/bin/jenkins-agent
+COPY jenkinsci-docker-agent/jenkins-agent /usr/local/bin/jenkins-agent
 RUN chmod +x /usr/local/bin/jenkins-agent &&\
     ln -s /usr/local/bin/jenkins-agent /usr/local/bin/jenkins-slave
 

@@ -29,7 +29,8 @@ else
 fi
 
 # BASH is incapable of passing down arrays, so they have to be expanded here and re-arrayed again inside
-# This is ugly, but I don't know of another in-memory solution
+# This is ugly, but I don't know of another in-memory solution, except for
+# a `for` loop here instead of inside, but this is useless for some and harmful (less context) for other scenarios
 if [[ -z $Action ]] || [[ $Action == "default" ]]; then
     /opt/packagebuilder.sh "${packages[*]}" || exit 1
 elif [[ $Action == "custom" ]]; then

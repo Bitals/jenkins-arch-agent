@@ -1,0 +1,4 @@
+[submodule "jenkinsci-docker-agent"]
+	path = jenkinsci-docker-agent
+	url = https://github.com/jenkinsci/docker-agent
+	branch = master
