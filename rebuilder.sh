@@ -1,26 +1,25 @@
 #!/usr/bin/env bash
 
-#Check if we are dealing with an array
-#Current Jenkins jobs are incapable of defining arrays, so I just convert strings to them if needed
 packarray=""
-if [[ "$AURPACKAGE" =~ \ |\' ]]
+if [[ "$1" =~ \ |\' ]]
 then
     packarray=true
     declare -a packages
-    IFS=' ' read -r -a packages <<< "$AURPACKAGE"
+    IFS=' ' read -r -a packages <<< "$1"
 else
     packarray=false
-    packages=$AURPACKAGE
+    packages=$1
 fi
 
-echo Rebuilding "$AURPACKAGE"...
-#mv /home/builder/rebuild.log /home/builder/rebuild.log.old
-#for i in $( find .cache/aurutils/sync/*/.SRCINFO -exec grep -sm 1 "pkgname" {} \;|tr -d ' '|cut -d "=" -f 2 ); do
-#    echo
-#    echo "AURPACKAGE=" $i >> /home/builder/rebuild.log
-#    echo
+
 for pkgname in ${packages[*]}
 do
+    echo Rebuilding "$pkgname"...
+    #mv /home/builder/rebuild.log /home/builder/rebuild.log.old
+    #for i in $( find .cache/aurutils/sync/*/.SRCINFO -exec grep -sm 1 "pkgname" {} \;|tr -d ' '|cut -d "=" -f 2 ); do
+    #    echo
+    #    echo "AURPACKAGE=" $i >> /home/builder/rebuild.log
+    #    echo
     pkgbase=$( aur query -t info "$pkgname"|jq -r '.results[].PackageBase' )
     if [ ! -d /home/builder/.cache/aurutils/sync/"$pkgbase" ]; then
         cd /home/builder/.cache/aurutils/sync/|| exit 1
