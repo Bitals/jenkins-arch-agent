@@ -65,6 +65,7 @@ RUN pacman -S --noconfirm ccache && mkdir /home/builder/ccache && chown builder:
 ENV CCACHE_SLOPPINESS=locale,time_macros
 ENV CCACHE_DIR=/home/builder/ccache
 ENV CCACHE_MAXSIZE="100G"
+ENV PUB_CACHE=/home/builder/pub-cache
 
 ENV CARGO_BUILD_JOBS=24
 
