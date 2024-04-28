@@ -55,7 +55,7 @@ COPY jenkinsci-docker-agent/jenkins-agent /usr/local/bin/jenkins-agent
 RUN chmod +x /usr/local/bin/jenkins-agent &&\
     ln -s /usr/local/bin/jenkins-agent /usr/local/bin/jenkins-slave
 
-RUN pacman -Sy --noconfirm aurutils
+RUN pacman -Sy --noconfirm aurutils setconf bc
 
 RUN pacman -S --noconfirm sccache && mkdir /home/builder/sccache && chown builder:builder /home/builder/sccache
 ENV RUSTC_WRAPPER=/usr/bin/sccache
