@@ -6,8 +6,13 @@ if [[ -n "$PGPFINGER" ]]; then
     gpg --recv-keys $PGPFINGER
 fi
 if [[ -n "$PGPLINK" ]]; then
-    curl $PGPLINK > "$AURPACKAGE"-key
-    gpg --import "$AURPACKAGE"-key
+    IFS=' '
+    l=1
+    for i in $PGPLINK; do
+        curl "$i" > "$AURPACKAGE"-"$l"".key"
+        gpg --import "$AURPACKAGE"-"$l"".key"
+        ((l++))
+    done
 fi
 
 echo Updating pacman databases...

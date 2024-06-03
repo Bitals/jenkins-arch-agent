@@ -30,11 +30,11 @@ do
     cd /home/builder/.cache/aurutils/sync/"$pkgbase" || exit 1
     makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm|| makepkg -so --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm || exit 1
     if [[ $Bump == true ]]; then
-        echo "Bumping pkgrel with 0.1"
         # aur sync --makepkg-args --cleanbuild -A --noconfirm --noview --rebuild=.1 --sign --database Bitals --root /home/builder/bitalsrepo "$pkgname"|| exit 1
         
         c_pkgrel=$(grep "pkgrel=" PKGBUILD|cut -d "=" -f 2)
         n_pkgrel=$(bc <<< $c_pkgrel+0.1)
+        echo "Bumping pkgrel with 0.1 ($n_pkgrel)"
         # sed -i "s/pkgrel=$c_pkgrel/pkgrel=$n_pkgrel/" PKGBUILD ||exit 1
         setconf -a PKGBUILD pkgrel=$n_pkgrel
 
