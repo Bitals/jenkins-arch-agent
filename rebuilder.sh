@@ -28,6 +28,8 @@ do
         # cd /home/builder/.cache/aurutils/sync/"$pkgbase" || exit 1
     fi
     cd /home/builder/.cache/aurutils/sync/"$pkgbase" || exit 1
+    git fetch
+    git pull
     makepkg -soe --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm|| makepkg -so --nocheck --noprepare --skipchecksums --skippgpcheck --noconfirm || exit 1
     if [[ $Bump == true ]]; then
         # aur sync --makepkg-args --cleanbuild -A --noconfirm --noview --rebuild=.1 --sign --database Bitals --root /home/builder/bitalsrepo "$pkgname"|| exit 1
